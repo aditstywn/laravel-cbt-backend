@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'email' => 'adit@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
-            'roles' => 'Admin',
+            'roles' => 'ADMIN',
             'phone' => '0895326767872',
         ]);
     }

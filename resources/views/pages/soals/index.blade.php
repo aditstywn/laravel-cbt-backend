@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Bank Soal')
+@section('title', 'Bank Soal ')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -11,7 +11,7 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>Bank Soal</h1>
+                <h1>Bank Soal - Tugas 2 Adit Stywn</h1>
                 <div class="section-header-button">
                     <a href="{{ route('soal.create') }}" class="btn btn-primary">Add New</a>
                 </div>

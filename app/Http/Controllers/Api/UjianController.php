@@ -99,7 +99,7 @@ class UjianController extends Controller
 
         $soalIds = $ujianSoalList->pluck('soal_id');
 
-        dd($soalIds);
+        // dd($soalIds);
 
         $ujianSoalListId = [];
 

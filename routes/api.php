@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ContentController;
+use App\Http\Controllers\Api\MateriController;
+use App\Http\Controllers\Api\UjianController;
+use App\Models\Materi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +22,28 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//register
+Route::post('/register', [AuthController::class, 'register']);
+
+// login
+Route::post('/login', [AuthController::class, 'login']);
+
+// logout
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+// create ujian
+Route::post('/create-ujian', [UjianController::class, 'createUjian'])->middleware('auth:sanctum');
+
+// get soal ujian
+Route::get('/get-soal-ujian', [UjianController::class, 'getListSoalByKategori'])->middleware('auth:sanctum');
+
+
+// post ujian
+Route::post('/answer', [UjianController::class, 'jawabanSoal'])->middleware('auth:sanctum');
+
+// api content
+Route::apiResource('contents', ContentController::class)->middleware('auth:sanctum');
+
+// api Materi
+Route::apiResource('materis', MateriController::class)->middleware('auth:sanctum');

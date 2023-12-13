@@ -94,6 +94,13 @@ class UjianController extends Controller
     public function getListSoalByKategori(Request $request)
     {
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        // if ujian notfound return empty
+        if (!$ujian) {
+            return response()->json([
+                'message' => 'Ujian Tidak Ditemukan',
+                'data' => [],
+            ]);
+        }
 
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
 
@@ -126,6 +133,13 @@ class UjianController extends Controller
         ]);
 
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        // if ujian notfound return empty
+        if (!$ujian) {
+            return response()->json([
+                'message' => 'Ujian Tidak Ditemukan',
+                'data' => [],
+            ]);
+        }
 
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->where('soal_id', $validateData['soal_id'])->first();
         $soal = Soal::where('id', $validateData['soal_id'])->first();
@@ -158,6 +172,13 @@ class UjianController extends Controller
     {
         $kategori = $request->kategori;
         $ujian = Ujian::where('user_id', $request->user()->id)->first();
+        // if ujian notfound return empty
+        if (!$ujian) {
+            return response()->json([
+                'message' => 'Ujian Tidak Ditemukan',
+                'data' => [],
+            ]);
+        }
         $ujianSoalList = UjianSoalList::where('ujian_id', $ujian->id)->get();
 
         // ujian soal list by kategori
